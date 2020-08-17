@@ -1,10 +1,12 @@
-import { FETCHED, FETCHING, FETCH_ERROR } from "../actions/actions";
+import { FETCHED, FETCHING, FETCH_ERROR, ADD_WATCH, WATCHED } from "../actions/actions";
 
 const initialState = ({
     loading: false,
     error: "",
     movies: [],
     totalResults: "",
+    addWatch: [],
+    watched: [],
 });
 
 const movies = (state = initialState, { type, payload }) => {
@@ -16,6 +18,7 @@ const movies = (state = initialState, { type, payload }) => {
             }
         case FETCHED:
             return {
+                ...state,
                 loading: false,
                 movies: payload.Search,
                 error: null,
@@ -23,13 +26,41 @@ const movies = (state = initialState, { type, payload }) => {
             }
         case FETCH_ERROR:
             return {
+                ...state,
                 loading: false,
                 movies: null,
                 error: payload
             }
-            default: return {
-                ...state
+        case ADD_WATCH:
+            const add = state.movies.filter((movie) => {
+                if (movie.imdbID === payload) {
+                    return movie;
+                }
+            })[0];
+            return {
+                ...state,
+                addWatch: [...state.addWatch, add],
             }
+        case WATCHED:
+            const movie = state.movies.filter((movie) => {
+                if (movie.imdbID === payload.movieId) {
+                    return movie;
+                }
+            })[0];
+
+            return {
+                ...state,
+                watched: [
+                    ...state.watched,
+                    {
+                        movie: movie,
+                        stars: payload.stars,
+                    }
+                ]
+            }
+        default: return {
+            ...state
+        }
     }
 }
 

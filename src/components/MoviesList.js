@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PlaceHolder from './PlaceHolder';
+import PlaceHolder from '../containers/PlaceHolder';
 
 class MoviesList extends Component {
 
@@ -7,7 +7,7 @@ class MoviesList extends Component {
         this.props.fetchMovies();
     }
     render() {
-        const { loading, error, movies, totalResults } = this.props;
+        const { loading, error, movies } = this.props;
         if (!loading) {
             if (!error) {
                 if (movies !== undefined) {
