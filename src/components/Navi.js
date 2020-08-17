@@ -11,8 +11,8 @@ const Navi = () => {
     return (
       <ul className="menu-left">
         <li><NavLink exact activeStyle={active} to={"/"}>Wyszukiwarka</NavLink></li>
-        <li><NavLink exact activeStyle={active} to={"/done"}>Obejrzane</NavLink></li>
-        <li><NavLink exact activeStyle={active} to={"/not-done"}>Do obejrzenia</NavLink></li>
+        <li><NavLink exact activeStyle={active} to={"/watched"}>Obejrzane</NavLink></li>
+        <li><NavLink exact activeStyle={active} to={"/planed"}>Do obejrzenia</NavLink></li>
       </ul>
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react';
-import Search from './Search';
-import PlaceHolder from './PlaceHolder';
+import Search from '../containers/Search';
+import MoviesList from '../containers/MoviesList';
 
 const Main = () => {
     return (
@@ -8,17 +8,7 @@ const Main = () => {
             <hr/><br/>
             <Search/><br/>
             <hr/><br/>
-            <PlaceHolder/>
-            <PlaceHolder/>
-            <PlaceHolder/>
-            <PlaceHolder/>
-            <PlaceHolder/>
-            <PlaceHolder/>
-            <PlaceHolder/>
-            <PlaceHolder/>
-            <PlaceHolder/>
-            <PlaceHolder/>
-            <PlaceHolder/>
+            <MoviesList/>
             
         </>
     )

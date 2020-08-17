@@ -1,9 +1,10 @@
-import { FETCHED, FETCHING, FETCH_ERROR } from "./actions";
-import {combineReducers} from "redux";
+import { FETCHED, FETCHING, FETCH_ERROR } from "../actions/actions";
+
 const initialState = ({
     loading: false,
     error: "",
-    movies: null
+    movies: [],
+    totalResults: "",
 });
 
 const movies = (state = initialState, { type, payload }) => {
@@ -16,8 +17,9 @@ const movies = (state = initialState, { type, payload }) => {
         case FETCHED:
             return {
                 loading: false,
-                movies: payload,
-                error: null
+                movies: payload.Search,
+                error: null,
+                totalResults: payload.totalResults,
             }
         case FETCH_ERROR:
             return {
@@ -31,6 +33,4 @@ const movies = (state = initialState, { type, payload }) => {
     }
 }
 
-export default combineReducers({
-    movies
-});
+export default movies;

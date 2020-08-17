@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "../index.css";
 
-const PlaceHolder = () => {
+const PlaceHolder = (movie) => {
+    const {Title, Year, imdbID, Type, Poster} = movie.movie;
     return (
-
+        <Link to={"/details/"+imdbID}>
         <div className="placeholder">
-            <img height="181" width="135" alt="" />
+            <img className="poster" src={Poster} alt="" /><br/>
+            <div className="title">{Title} - {Year}</div>
             <div>
                 <fieldset className="rating">
                     <input type="radio" id="star5" name="rating" value="5" /><label className="full" title="Awesome - 5 stars"></label>
@@ -16,8 +19,8 @@ const PlaceHolder = () => {
                 </fieldset>
                 <input type="checkbox" />
             </div>
-            
         </div>
+        </Link>
     )
 }
 

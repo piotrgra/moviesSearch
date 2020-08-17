@@ -13,22 +13,24 @@ const moviesFetched = (movies) => ({
 
 const moviesError = (error) => ({
     type: FETCH_ERROR,
+    payload: error,
 })
 
-const fetchMovies = () => dispatch => {
-    return () => {
+const fetchMovies = (search) => async (dispatch) => {
+        if(search === undefined) {
+            search = "harry potter";
+        }
         dispatch(startFetching());
-
-        fetch("http://www.omdbapi.com/?s=%22star%22&apikey=685a6224").fetchMovies().then(
-            (respons) => {
-                dispatch(moviesFetched(respons));
-            }
-        ).catch(
+        fetch("http://www.omdbapi.com/?s="+search+"&apikey=685a6224&type=movie")
+        .then(respons => respons.json())
+        .then(data  => {
+            dispatch(moviesFetched(data));
+        })
+        .catch(
             (error) => {
                 dispatch(moviesError(error));
             }
         )
-    }
 }
 
 export {

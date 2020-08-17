@@ -29,6 +29,15 @@ code {
   display: inline-block;
 }
 
+.title {
+  max-width: 120px
+}
+
+.poster {
+  height: 181px;
+  width:  135px;
+}
+
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 fieldset, label { margin: 0; padding: 0; }
 body{ margin: 20px; }
