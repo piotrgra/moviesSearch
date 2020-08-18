@@ -1,5 +1,5 @@
 import MoviesList from "../components/MoviesList";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { fetchMovies } from "../redux/actions/actions";
 
 const mapState = (state) => ({
@@ -11,7 +11,7 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
     fetchMovies: () => dispatch(fetchMovies()),
-    
+
 })
 
 export default connect(mapState, mapDispatch)(MoviesList);
