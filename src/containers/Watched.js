@@ -2,8 +2,7 @@ import Watched from "../components/Watched";
 import { connect } from "react-redux";
 
 const mapState = (state) => ({
-    movies: state.movies.movies,
-    totalResults: state.movies.totalResults, //TODO
+    movies: state.movies.watched,
 })
 
 

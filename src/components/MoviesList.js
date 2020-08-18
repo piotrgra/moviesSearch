@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PlaceHolder from '../containers/PlaceHolder';
+import { Spinner, Col, Row, Button, Container } from "react-bootstrap";
+
 
 class MoviesList extends Component {
 
@@ -13,13 +15,17 @@ class MoviesList extends Component {
                 if (movies !== undefined) {
                     if (movies.length > 0) {
                         return (
-                            <>
-                                {movies.map((movie, i) => (
-                                    <PlaceHolder movie={movie} key={i} />
-                                ))}
+                            <Container>
+                                <Row>
+                                    {movies.map((movie, i) => (
+                                        <Col xs={6} md={4} key={i}>
+                                            <PlaceHolder movie={movie} />
 
+                                        </Col>
+                                    ))}
+                                </Row>
+                            </Container>
 
-                            </>
                         )
                     } else {
                         return <h1>Podaj nazwe filmu ktorego chcesz wyszukac</h1>
@@ -32,7 +38,16 @@ class MoviesList extends Component {
                 return <h1>Cos poszlo nie tak...</h1>
             }
         } else {
-            return <h1>Wczytuje sie dla Ciebie...</h1>
+            return <Button variant="primary" disabled>
+                <Spinner
+                    as="span"
+                    animation="grow"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                />
+            Loading...
+          </Button>
         }
 
     }

@@ -35,6 +35,8 @@ const movies = (state = initialState, { type, payload }) => {
             const add = state.movies.filter((movie) => {
                 if (movie.imdbID === payload) {
                     return movie;
+                } else {
+                    return null;
                 }
             })[0];
             return {
@@ -45,6 +47,8 @@ const movies = (state = initialState, { type, payload }) => {
             const movie = state.movies.filter((movie) => {
                 if (movie.imdbID === payload.movieId) {
                     return movie;
+                } else {
+                    return null;
                 }
             })[0];
 
